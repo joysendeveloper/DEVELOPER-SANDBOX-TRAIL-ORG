@@ -14,5 +14,6 @@ private class AccountServiceTest {
     Assert.areEqual( 1, accts.size(), 'should have found new account' );
     Assert.areEqual( acctName, accts[0].Name, 'incorrect name' );
     Assert.areEqual( acctNumber, accts[0].AccountNumber, 'incorrect account number' );
+    Assert.areEqual( tickerSymbol, accts[0].TickerSymbol, 'incorrect ticker symbol' );
   }
 }

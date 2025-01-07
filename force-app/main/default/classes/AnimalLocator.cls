@@ -9,11 +9,13 @@ public class AnimalLocator {
         HttpResponse response = http.send(request);
         
         if (response.getStatusCode() == 200) {
-            // Parse the response JSON to get the name property
-            Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-            return (String) responseMap.get('name');
+            Map<String, Object> jsonData = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            Map<String, Object> animalData = (Map<String, Object>) jsonData.get('animal');
+            String animalName = (String) animalData.get('name');
+
+            return animalName;
         } else {
-            throw new CalloutException('HTTP callout failed with status code: ' + response.getStatusCode());
+            return 'HTTP callout failed with status code: ' + response.getStatusCode();
         }
     }
 }
